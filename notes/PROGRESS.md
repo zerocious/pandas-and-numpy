@@ -2,6 +2,8 @@
 
 Mark sections as you complete them (`[x]`). Compare with the matching `*-tasks.ipynb` / solution notebook pair.
 
+**Stuck on a task?** See [HINTS.md](HINTS.md) for that exercise (hints only, not full solutions).
+
 ## Notebooks
 
 - [ ] **01 — NumPy** (`01-numpy-tasks.ipynb`)

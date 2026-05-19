@@ -16,6 +16,7 @@ pandas-and-numpy/
 │   ├── raw/                        # Input CSVs (committed)
 │   └── output/                     # Generated exports (gitignored)
 ├── notes/
+│   ├── HINTS.md                    # Hints if you're stuck (per task)
 │   ├── PROGRESS.md                 # Section checklist
 │   └── mistakes.md                 # Your mistake log
 ├── tests/                          # pytest checks
@@ -30,6 +31,7 @@ pandas-and-numpy/
 2. Read each task in the **markdown** cells; write code under `# Your solution here`.
 3. Compare with the matching solution notebook (same number, without `-tasks`).
 4. Track progress in [`notes/PROGRESS.md`](notes/PROGRESS.md).
+5. Stuck? Read hints for that task in [`notes/HINTS.md`](notes/HINTS.md) — nudges only, not full answers.
 
 ## Setup
 
