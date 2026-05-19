@@ -4,18 +4,25 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 **Related files:** solution notebooks (`01-numpy.ipynb`, …), [PROGRESS.md](PROGRESS.md), [mistakes.md](mistakes.md)
 
-### Quick index (29 tasks)
+### Jump navigation
 
-| Notebook | Tasks covered in this file |
-|----------|----------------------------|
-| `01-numpy-tasks` | 1.1–1.3, 2.1–2.3, 3.1–3.3, Boss fight |
-| `02-pandas-fundamentals-tasks` | 5.1–5.3, 6.1–6.3, 7.1–7.3 |
-| `03-pandas-pipelines-tasks` | Users/orders pipeline, High-impact quarters, Cohort retention, Events, Regional activity, Cohort dashboard |
-| `04-pandas-business-tasks` | Regional sales audit, Customer 360, Churn risk, Channel concentration |
+**01 — NumPy:** [1.1](#задание-11) · [1.2](#задание-12) · [1.3](#задание-13) · [2.1](#задание-21) · [2.2](#задание-22) · [2.3](#задание-23) · [3.1](#задание-31) · [3.2](#задание-32) · [3.3](#задание-33) · [Boss](#boss-1)
+
+**02 — Pandas fundamentals:** [5.1](#задание-51) · [5.2](#задание-52) · [5.3](#задание-53) · [6.1](#задание-61) · [6.2](#задание-62) · [6.3](#задание-63) · [7.1](#задание-71) · [7.2](#задание-72) · [7.3](#задание-73)
+
+**03 — Pipelines:** [Users/orders](#pipeline-1) · [High-impact quarters](#pipeline-2) · [Cohort retention](#pipeline-3) · [Events](#pipeline-4) · [Regional activity](#pipeline-5) · [Cohort dashboard](#pipeline-6)
+
+**04 — Business:** [Regional sales](#business-1) · [Customer 360](#business-2) · [Churn risk](#business-3) · [Channel concentration](#business-4)
+
+**Other:** [General tips](#general-tips)
 
 ---
 
+<a id="numpy"></a>
+
 ## 01 — NumPy (`01-numpy-tasks.ipynb`)
+
+<a id="задание-11"></a>
 
 ### Задание 1.1 — Arrays & attributes
 
@@ -26,6 +33,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 **Stuck?** Print each result on its own line so you can match the expected output format.
 
 ---
+
+<a id="задание-12"></a>
 
 ### Задание 1.2 — Reshape & views
 
@@ -38,6 +47,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 ---
 
+<a id="задание-13"></a>
+
 ### Задание 1.3 — dtype & memory
 
 - `np.random.uniform(low, high, size=10_000)` — check `arr.dtype` and `arr.nbytes` before and after `.astype(np.float32)`.
@@ -49,6 +60,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 ---
 
+<a id="задание-21"></a>
+
 ### Задание 2.1 — Slicing & masks
 
 - `np.arange(1, 31)` gives 1…30 (31 is exclusive).
@@ -58,6 +71,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 ---
 
+<a id="задание-22"></a>
+
 ### Задание 2.2 — np.where & indices
 
 - Random integers: `np.random.randint(10, 91, size=(5, 5))` (high is exclusive).
@@ -66,6 +81,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 - Last column to zero: `arr[:, -1] = 0`.
 
 ---
+
+<a id="задание-23"></a>
 
 ### Задание 2.3 — Filter & segments
 
@@ -77,6 +94,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 ---
 
+<a id="задание-31"></a>
+
 ### Задание 3.1 — Broadcasting
 
 - Row-wise add: `matrix + np.array([1, 2, 3, 4, 5])` — shapes `(4,5)` and `(5,)`.
@@ -87,6 +106,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 ---
 
+<a id="задание-32"></a>
+
 ### Задание 3.2 — Vectorization vs loop
 
 - `np.random.randn(1_000_000)` for N(0,1).
@@ -96,6 +117,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 ---
 
+<a id="задание-33"></a>
+
 ### Задание 3.3 — Min–max normalization
 
 - `data = np.random.rand(1000, 5) * scale` — keep values positive so min–max is stable.
@@ -104,6 +127,8 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 - Check: `normalized.min(axis=0)`, `normalized.max(axis=0)` ≈ 0 and 1.
 
 ---
+
+<a id="boss-1"></a>
 
 ### Boss fight — Day 1 vector pipeline
 
@@ -118,7 +143,11 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="pandas-fundamentals"></a>
+
 ## 02 — Pandas fundamentals (`02-pandas-fundamentals-tasks.ipynb`)
+
+<a id="задание-51"></a>
 
 ### Задание 5.1 — DataFrame basics
 
@@ -130,6 +159,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="задание-52"></a>
+
 ### Задание 5.2 — loc / iloc
 
 - Build with `pd.DataFrame(..., index=[...], columns=[...])` or `np.arange(1,16).reshape(5,3)`.
@@ -138,6 +169,8 @@ Work in order; each step uses the result of the previous.
 - Subset + **`.copy()`** before changing `z`, or you get `SettingWithCopyWarning` and may mutate the original.
 
 ---
+
+<a id="задание-53"></a>
 
 ### Задание 5.3 — Cleaning pipeline
 
@@ -152,6 +185,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="задание-61"></a>
+
 ### Задание 6.1 — groupby + agg
 
 - Single agg: `df.groupby('category')['sales'].sum()`.
@@ -159,6 +194,8 @@ Work in order; each step uses the result of the previous.
 - Named syntax gives flat column names immediately.
 
 ---
+
+<a id="задание-62"></a>
 
 ### Задание 6.2 — Business metrics per region
 
@@ -169,6 +206,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="задание-63"></a>
+
 ### Задание 6.3 — transform
 
 - `groupby('category')['monthly_spend'].transform('mean')` — same row count as original.
@@ -178,6 +217,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="задание-71"></a>
+
 ### Задание 7.1 — merge
 
 - `pd.merge(df_users, df_orders, on='user_id', how='left', validate='1:m')` — one user, many orders.
@@ -185,6 +226,8 @@ Work in order; each step uses the result of the previous.
 - `amount.fillna(0)` then `groupby('tier')['amount'].sum()`.
 
 ---
+
+<a id="задание-72"></a>
 
 ### Задание 7.2 — concat + pivot
 
@@ -194,6 +237,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="задание-73"></a>
+
 ### Задание 7.3 — melt + share
 
 - `pd.melt(df_wide, id_vars=['city'], value_vars=[...], var_name='month', value_name='revenue')`.
@@ -202,14 +247,18 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="pandas-pipelines"></a>
+
 ## 03 — Pandas pipelines (`03-pandas-pipelines-tasks.ipynb`)
+
+<a id="pipeline-1"></a>
 
 ### Pipeline: users + orders → metrics_by_region
 
 - Paths: `str(RAW / 'users.csv')`, save to `str(OUT / 'metrics_by_region.csv')`.
 - **Dates:** `pd.to_datetime(..., format='%d.%m.%Y')` — avoid `parse_dates=True` on `DD.MM.YYYY` strings (pandas may mis-parse).
 - `merge(..., how='left', validate='1:m')` — users without orders keep rows with NaN dates/amounts.
-- **Year filter:** task text may say 2024, but `orders.csv` is **2023** — use `.dt.year == 2023` or you get an empty result.
+- **Year filter:** use `.dt.year == 2023` (matches `orders.csv`).
 - Filter year **after** merge; `fillna(0)` on amount for users with no orders.
 - Active users: filter `amount > 0`, then `groupby('region').agg(..., active_users=('user_id', 'nunique'))`.
 - `revenue_share = total_revenue / total_revenue.sum()`.
@@ -218,9 +267,9 @@ Work in order; each step uses the result of the previous.
 
 ---
 
-### High-impact quarters (sales_wide)
+<a id="pipeline-2"></a>
 
-> **Note:** In the notebook this block is titled «Когортный анализ…», but the work uses **`sales_wide.csv`** (melt + pivot), not `transactions.csv`.
+### High-impact quarters (sales_wide)
 
 - `pd.read_csv(str(RAW / 'sales_wide.csv'))` then `melt` with `id_vars=['product','region']`, quarter columns as `value_vars`.
 - `total_year = groupby(['product','region'])['revenue'].transform('sum')`.
@@ -228,6 +277,8 @@ Work in order; each step uses the result of the previous.
 - `pivot_table(index='product', columns='quarter', values='revenue', aggfunc='sum').fillna(0)`.
 
 ---
+
+<a id="pipeline-3"></a>
 
 ### Cohort retention (transactions)
 
@@ -243,6 +294,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="pipeline-4"></a>
+
 ### Event metrics (raw_events)
 
 - `read_csv` with `dtype={'user_id': 'str', 'value': 'float32'}`.
@@ -255,6 +308,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="pipeline-5"></a>
+
 ### Regional activity (users + sessions)
 
 - Parse **both** date columns with `format='%d.%m.%Y'`.
@@ -265,6 +320,8 @@ Work in order; each step uses the result of the previous.
 - `groupby('region').agg(..., active_users=('user_id', 'nunique'))`.
 
 ---
+
+<a id="pipeline-6"></a>
 
 ### Cohort dashboard (transactions + pivot)
 
@@ -277,7 +334,11 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="pandas-business"></a>
+
 ## 04 — Pandas business (`04-pandas-business-tasks.ipynb`)
+
+<a id="business-1"></a>
 
 ### Regional sales audit
 
@@ -291,6 +352,8 @@ Work in order; each step uses the result of the previous.
 
 ---
 
+<a id="business-2"></a>
+
 ### Customer 360 (crm + billing)
 
 - `dtype={'cust_id': str}` on both files; `drop_duplicates` on CRM.
@@ -300,6 +363,8 @@ Work in order; each step uses the result of the previous.
 - `np.where(max_invoice_amount > 200, ...)` for `is_high_value` (watch NaN → False or fill first).
 
 ---
+
+<a id="business-3"></a>
 
 ### Churn risk (user_events)
 
@@ -319,6 +384,8 @@ Break into small cells:
 
 ---
 
+<a id="business-4"></a>
+
 ### Channel concentration
 
 1. `melt` channel columns to long; drop `revenue == 0` or NaN; count dropped rows.
@@ -331,6 +398,8 @@ Break into small cells:
 6. Two CSV exports: `channel_pairs_long.csv`, `product_concentration_summary.csv`.
 
 ---
+
+<a id="general-tips"></a>
 
 ## General tips
 

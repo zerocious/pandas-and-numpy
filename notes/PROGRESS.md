@@ -2,7 +2,7 @@
 
 Mark sections as you complete them (`[x]`). Compare with the matching `*-tasks.ipynb` / solution notebook pair.
 
-**Stuck on a task?** See [HINTS.md](HINTS.md) for that exercise (hints only, not full solutions).
+**Stuck on a task?** See [HINTS.md](HINTS.md) for that exercise (hints only, not full solutions). Jump directly, e.g. [задание 1.1](HINTS.md#задание-11) or [pipeline: users/orders](HINTS.md#pipeline-1).
 
 ## Notebooks
 
