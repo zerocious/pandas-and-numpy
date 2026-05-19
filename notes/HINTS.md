@@ -4,6 +4,15 @@ Use this when you're stuck. These are **nudges**, not full solutions — try the
 
 **Related files:** solution notebooks (`01-numpy.ipynb`, …), [PROGRESS.md](PROGRESS.md), [mistakes.md](mistakes.md)
 
+### Quick index (29 tasks)
+
+| Notebook | Tasks covered in this file |
+|----------|----------------------------|
+| `01-numpy-tasks` | 1.1–1.3, 2.1–2.3, 3.1–3.3, Boss fight |
+| `02-pandas-fundamentals-tasks` | 5.1–5.3, 6.1–6.3, 7.1–7.3 |
+| `03-pandas-pipelines-tasks` | Users/orders pipeline, High-impact quarters, Cohort retention, Events, Regional activity, Cohort dashboard |
+| `04-pandas-business-tasks` | Regional sales audit, Customer 360, Churn risk, Channel concentration |
+
 ---
 
 ## 01 — NumPy (`01-numpy-tasks.ipynb`)
@@ -200,6 +209,7 @@ Work in order; each step uses the result of the previous.
 - Paths: `str(RAW / 'users.csv')`, save to `str(OUT / 'metrics_by_region.csv')`.
 - **Dates:** `pd.to_datetime(..., format='%d.%m.%Y')` — avoid `parse_dates=True` on `DD.MM.YYYY` strings (pandas may mis-parse).
 - `merge(..., how='left', validate='1:m')` — users without orders keep rows with NaN dates/amounts.
+- **Year filter:** task text may say 2024, but `orders.csv` is **2023** — use `.dt.year == 2023` or you get an empty result.
 - Filter year **after** merge; `fillna(0)` on amount for users with no orders.
 - Active users: filter `amount > 0`, then `groupby('region').agg(..., active_users=('user_id', 'nunique'))`.
 - `revenue_share = total_revenue / total_revenue.sum()`.
@@ -209,6 +219,8 @@ Work in order; each step uses the result of the previous.
 ---
 
 ### High-impact quarters (sales_wide)
+
+> **Note:** In the notebook this block is titled «Когортный анализ…», but the work uses **`sales_wide.csv`** (melt + pivot), not `transactions.csv`.
 
 - `pd.read_csv(str(RAW / 'sales_wide.csv'))` then `melt` with `id_vars=['product','region']`, quarter columns as `value_vars`.
 - `total_year = groupby(['product','region'])['revenue'].transform('sum')`.
@@ -311,15 +323,12 @@ Break into small cells:
 
 1. `melt` channel columns to long; drop `revenue == 0` or NaN; count dropped rows.
 2. Three shares — all via `transform('sum')` on different group keys:
-   - by `product`, by `channel`, and whole table (`transform` on constant group or divide by grand total).
-3. `hhi_product = groupby('product')['share_of_product'].transform(lambda x: (x**2).sum())` — **forbidden lambda** in strict mode; use: compute `(share**2).groupby(product).transform('sum')` or agg then map.
-   - Better: `df.assign(hhi_product=df.groupby('product')['share_of_product'].transform(lambda s: (s**2).sum()))` — if lambda forbidden, `groupby('product')['share_of_product'].apply(lambda s: (s**2).sum())` might also be banned. Vectorized: square then `groupby('product').transform('sum')` on squared shares.
-4. `risk_class` with `np.select` or `pd.cut`.
-5. Product summary: `groupby('product').agg(...)` + `idxmax` pattern from task hint.
-6. Two CSV exports to `OUT`.
-
-**HHI without lambda:**  
-`df['hhi_product'] = (df['share_of_product'] ** 2).groupby(df['product']).transform('sum')`
+   - by `product`, by `channel`, and divide by the **grand total** for `share_of_total`.
+3. **HHI (no lambda, no apply):** square shares, then sum within product:
+   `df['hhi_product'] = (df['share_of_product'] ** 2).groupby(df['product']).transform('sum')`
+4. `risk_class` with `np.select` (thresholds: 0.35, 0.10).
+5. Product summary: `groupby('product').agg(...)` + `idxmax` pattern from the task notebook.
+6. Two CSV exports: `channel_pairs_long.csv`, `product_concentration_summary.csv`.
 
 ---
 
