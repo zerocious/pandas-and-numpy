@@ -1,0 +1,5 @@
+﻿event_type,count_events,avg_value,total_value,share_of_total
+click,389,124.761566,48532.25,0.4450941
+login,65,159.952,10396.88,0.09535082
+purchase,160,166.08644,26573.83,0.24371125
+view,162,145.27914,23535.22,0.21584386
