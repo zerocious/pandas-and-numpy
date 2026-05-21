@@ -1,75 +1,84 @@
-# Pandas and NumPy
+# Pandas analytics portfolio
 
-Practice notebooks and datasets for NumPy and pandas exercises.
+End-to-end **NumPy & pandas** lab: dirty CSV ingestion, merges, cohort retention, sessionization, and BI-ready exports.
 
-## Project layout
+![CI](https://github.com/zerocious/pandas-and-numpy/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-```
-pandas-and-numpy/
-├── notebooks/
-│   ├── 00-index.ipynb              # Start here
-│   ├── 01-numpy.ipynb … 04-pandas-business.ipynb   # Solutions
-│   ├── ru/                         # Task notebooks (Russian)
-│   └── en/                         # Task notebooks (English)
-├── data/
-│   ├── raw/                        # Input CSVs (committed)
-│   └── output/                     # Generated exports (gitignored)
-├── notes/
-│   ├── HINTS.md                    # Hints if you're stuck
-│   ├── PROGRESS.md                 # Section checklist
-│   └── mistakes.md                 # Your mistake log
-├── tests/
-├── scripts/
-├── README.md
-└── requirements.txt
-```
+**Author:** [@zerocious](https://github.com/zerocious)
 
-> **Translation disclaimer:** Task notebooks in `notebooks/ru/` and `notebooks/en/` were translated by the repository author using AI (Cursor AI). They are not professional translations.
+## Skills demonstrated
 
-## Task priorities
+- Vectorized **NumPy** (broadcasting, masks, performance vs loops)
+- **pandas** cleaning: dtypes, `DD.MM.YYYY` parsing, deduplication, imputation
+- **merge** with `validate`, **groupby** / **transform** / named **agg**
+- **melt** & **pivot_table** for wide → long → analytic matrices
+- Cohort **retention** and revenue dashboards
+- Event **sessionization** (`diff`, `cumsum`, `Timedelta`)
+- Channel **concentration** (HHI, share metrics)
 
-See **[docs/PRIORITY_TASKS.md](docs/PRIORITY_TASKS.md)** — tables for repo improvements (employer-facing) and recommended study order.
+## Project map
 
-## How to study
+| Notebook | Business problem | Key output |
+|----------|------------------|------------|
+| [01-numpy](notebooks/01-numpy.ipynb) | Array ops, normalization, vector pipelines | In-notebook |
+| [02-pandas-fundamentals](notebooks/02-pandas-fundamentals.ipynb) | DataFrame basics, groupby, merge/melt/pivot | `clean_orders.csv` |
+| [03-pandas-pipelines](notebooks/03-pandas-pipelines.ipynb) | Users×orders metrics, cohorts, events | `metrics_by_region.csv`, `cohort_retention_real.csv`, … |
+| [04-pandas-business](notebooks/04-pandas-business.ipynb) | Customer 360, churn risk, channel concentration | `customer_master.csv`, `churn_risk_analysis.csv`, … |
 
-1. Open **`notebooks/00-index.ipynb`**.
-2. Pick a language folder: [`notebooks/ru/`](notebooks/ru/) or [`notebooks/en/`](notebooks/en/).
-3. Work through `*-tasks.ipynb` files; write code under `# Your solution here` / `# Ваше решение здесь`.
-4. Compare with the matching solution notebook in `notebooks/`.
-5. Track progress in [`notes/PROGRESS.md`](notes/PROGRESS.md).
-6. Stuck? [`notes/HINTS.md`](notes/HINTS.md)
+Case studies: [docs/SHOWCASE.md](docs/SHOWCASE.md) · Data dictionary: [data/README.md](data/README.md)
 
-## Setup
+## Quick start
 
 ```bash
+git clone https://github.com/zerocious/pandas-and-numpy.git
+cd pandas-and-numpy
 python -m venv .venv
 .venv\Scripts\activate          # Windows
+# source .venv/bin/activate     # macOS/Linux
 pip install -r requirements.txt
-jupyter notebook notebooks/
+pytest
+jupyter notebook notebooks/00-index.ipynb
 ```
 
-Task notebooks use `ROOT = Path('../..')` so paths work from `notebooks/ru/` or `notebooks/en/`.
+## Task notebooks (RU / EN)
 
-## Verify your work
+| Language | Folder |
+|----------|--------|
+| Русский | [notebooks/ru/](notebooks/ru/) |
+| English | [notebooks/en/](notebooks/en/) |
+
+Hints: [notes/HINTS.en.md](notes/HINTS.en.md) · [notes/HINTS.ru.md](notes/HINTS.ru.md)
+
+Task texts in `ru/` and `en/` were translated by the author with AI assistance (not professional translations). **Solution code** in the main notebooks is the primary portfolio artifact.
+
+## Repository layout
+
+```
+notebooks/     # Solutions + ru/ + en/ tasks
+data/raw/      # Input CSVs
+data/output/   # Generated exports (gitignored)
+tests/         # pytest checks on raw data & outputs
+docs/          # SHOWCASE, samples, priority tasks
+```
+
+## Verify
 
 ```bash
 pytest
-python scripts/run_solution_notebooks.py
+python scripts/run_solution_notebooks.py   # optional: regenerate outputs
 ```
 
-## Scripts
+Maintainer scripts: [scripts/README.md](scripts/README.md)
 
-| Script | Purpose |
-|--------|---------|
-| `scripts/build_lang_task_notebooks.py` | Regenerate `ru/` and `en/` task notebooks |
-| `scripts/run_solution_notebooks.py` | Execute all solution notebooks |
-| `scripts/split_notebooks.py` | Re-split monolithic notebook (maintenance) |
+## Links
+
+- [Progress checklist](notes/PROGRESS.md)
+- [Priority tasks](docs/PRIORITY_TASKS.md)
+- [Learning takeaways](notes/mistakes.md)
+- [Pin this repo on GitHub](docs/GITHUB_PROFILE.md)
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
-
-## Requirements
-
-- Python 3.10+
-- See `requirements.txt`

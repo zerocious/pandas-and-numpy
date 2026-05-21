@@ -1,0 +1,17 @@
+[project]
+name = "pandas-and-numpy"
+version = "0.1.0"
+description = "Pandas analytics portfolio: ETL-style pipelines, cohort retention, and business metrics"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=2.2.6",
+    "pandas>=2.2.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3.5", "jupyter>=1.1.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
