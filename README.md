@@ -61,6 +61,10 @@ python scripts/run_solution_notebooks.py
 | `scripts/run_solution_notebooks.py` | Execute all solution notebooks |
 | `scripts/split_notebooks.py` | Re-split monolithic notebook (maintenance) |
 
+## License
+
+MIT — see [LICENSE](LICENSE).
+
 ## Requirements
 
 - Python 3.10+
