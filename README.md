@@ -26,6 +26,10 @@ pandas-and-numpy/
 
 > **Translation disclaimer:** Task notebooks in `notebooks/ru/` and `notebooks/en/` were translated by the repository author using AI (Cursor AI). They are not professional translations.
 
+## Task priorities
+
+See **[docs/PRIORITY_TASKS.md](docs/PRIORITY_TASKS.md)** — tables for repo improvements (employer-facing) and recommended study order.
+
 ## How to study
 
 1. Open **`notebooks/00-index.ipynb`**.
