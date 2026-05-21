@@ -9,4 +9,4 @@
 | [03-pandas-pipelines-tasks.ipynb](03-pandas-pipelines-tasks.ipynb) | [../03-pandas-pipelines.ipynb](../03-pandas-pipelines.ipynb) |
 | [04-pandas-business-tasks.ipynb](04-pandas-business-tasks.ipynb) | [../04-pandas-business.ipynb](../04-pandas-business.ipynb) |
 
-English tasks: [../en/README.md](../en/README.md) · Hints: [../../notes/HINTS.md](../../notes/HINTS.md)
+English tasks: [../en/README.md](../en/README.md) · Подсказки: [../../notes/HINTS.ru.md](../../notes/HINTS.ru.md)

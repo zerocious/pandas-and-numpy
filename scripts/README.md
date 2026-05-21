@@ -5,7 +5,8 @@ Utilities for regenerating notebooks and outputs. Not required for reviewers run
 | Script | Purpose |
 |--------|---------|
 | `run_solution_notebooks.py` | Execute all solution notebooks → `data/output/` |
-| `build_lang_task_notebooks.py` | Regenerate `notebooks/ru/` and `notebooks/en/` task notebooks |
+| `build_lang_task_notebooks.py` | Regenerate aligned `notebooks/ru/` and `notebooks/en/` task notebooks |
+| `task_notebook_content.py` | RU/EN task text consumed by the builder (edit here, then rebuild) |
 | `clear_notebook_outputs.py` | Strip execution outputs before git commit |
 | `split_notebooks.py` | Split monolithic notebook into topic parts |
 | `convert_tasks_markdown.py` | Convert task comment cells to markdown |
